@@ -1,0 +1,376 @@
+<div class="breadcrumb-area bg-gray " style="margin-top: 12rem;">
+    <div class="container">
+        <div class="breadcrumb-content text-center">
+            <ul>
+                {{!-- <li>
+                    <a href="index.html">Home</a>
+                </li> --}}
+                <li class="active">Account </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- my account wrapper start -->
+<div class="my-account-wrapper pt-120 pb-120">
+    <div class="container">
+        <div class="mb-3 text-center">
+
+            {{#if change}}
+
+            <label class="text-success " for="">Your Profile Edited Successfully</label>
+
+            {{/if}}
+
+            {{#if passwordSuccess}}
+            <label class="text-success" for="">Password Change Successfully</label>
+            {{/if}}
+
+            {{#if resetEr}}
+            <label class="text-danger" for="">Your Current Password Is Incorrect</label>
+            {{/if}}
+
+            {{#if passwordMatchEr}}
+            <label class="text-danger" for="">New Password And Confirm Password Doesn't Match</label>
+            {{/if}}
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- My Account Page Start -->
+                <div class="myaccount-page-wrapper">
+                    <!-- My Account Tab Menu Start -->
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4">
+                            <div class="myaccount-tab-menu nav" role="tablist">
+                                <a href="#dashboad" class="active" data-bs-toggle="tab"><i class="fa fa-dashboard"></i>
+                                    Dashboard</a>
+                                <a href="#orders" data-bs-toggle="tab"><i class="fa fa-cart-arrow-down"></i>Orders</a>
+                                {{!-- <a href="#download" data-bs-toggle="tab"><i class="fa fa-cloud-download"></i>
+                                    Download</a>
+                                <a href="#payment-method" data-bs-toggle="tab"><i class="fa fa-credit-card"></i> Payment
+                                    Method</a> --}}
+                                <a href="#account-info" data-bs-toggle="tab"><i class="fa fa-user"></i> Account
+                                    Details</a>
+
+                                <a href="#address-edit" data-bs-toggle="tab"><i class="fa fa-map-marker"></i>Edit
+                                    Profile</a>
+
+                                <a href="#address-add" data-bs-toggle="tab"><i class="fa fa-map-marker"></i>Add
+                                    Address</a>
+
+
+                            </div>
+                        </div>
+                        <!-- My Account Tab Menu End -->
+                        <!-- My Account Tab Content Start -->
+
+
+
+                        <div class="col-lg-9 col-md-8">
+                            <div class="tab-content" id="myaccountContent">
+                                <!-- Single Tab Content Start -->
+
+                                {{!-- -------------------------dash board---------------------- --}}
+
+
+                                <div class="tab-pane fade show active" id="dashboad" role="tabpanel">
+                                    <div class="myaccount-content">
+                                        <h3>Dashboard</h3>
+                                        <div class="welcome">
+                                            <p>Hello, <strong>{{userDetails.Name}}</strong></p>
+                                        </div>
+
+                                        <p class="mb-0">From your account dashboard. you can easily check & view your
+                                            recent orders, manage your shipping and billing addresses and edit your
+                                            password and account details.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Single Tab Content End -->
+                                <!-- Single Tab Content Start -->
+
+
+                                {{!-- ------------------- order details -------------------------------- --}}
+                                <div class="tab-pane fade" id="orders" role="tabpanel">
+                                    <div class="myaccount-content">
+                                        <h3>Orders</h3>
+                                        <div class="myaccount-table table-responsive text-center">
+                                            <table class="table table-bordered">
+                                                <thead class="thead-light">
+                                                    <tr>
+
+                                                        <th>Date</th>
+                                                        <th>Address</th>
+                                                        <th>Amount</th>
+                                                        <th>Payment Method</th>
+                                                        <th>Status</th>
+                                                        <th>Action</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {{#each orders}}
+                                                    <tr>
+                                                        <td>{{this.date}}</td>
+                                                        <td>{{this.address.Housename}}
+                                                            <br>
+                                                            {{this.address.Streetname}}
+                                                            <br>
+                                                            {{this.address.State}}
+                                                            <br>
+                                                            {{this.address.Pin}}
+                                                        </td>
+
+                                                        <td>{{this.totalAmount}}</td>
+                                                        <td>{{this.paymentMethod}}</td>
+                                                        <td>{{this.status}}</td>
+
+                                                        <td>
+                                                            {{#if this.cancel}}
+
+                                                            {{else}}
+                                                            <a class="btn btn-danger w-100"
+                                                                href="/cancelorder/{{this._id}}">Cancel</a><br>
+                                                            {{/if}}
+
+                                                            {{#if this.return}}
+                                                            <a class="btn btn-success w-100"
+                                                                href="/cancelorder/{{this._id}}">Return</a><br>
+                                                            {{/if}}
+
+                                                            <a class=" mt-1 btn btn-primary w-100"
+                                                                href="/view-order-products/{{this._id}}">View</a>
+                                                        </td>
+                                                    </tr>
+
+                                                    {{/each}}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                {{!-- --------------------------edit profile-------------------- --}}
+
+                                <div class="tab-pane fade" id="address-edit" role="tabpanel">
+                                    <div class="myaccount-content">
+                                        <legend class="h5"><small>Edit Details</small></legend>
+                                        <hr style="">
+                                        <div class="account-details-form">
+                                            <form action="/editprofile" method="post">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="single-input-item">
+                                                            <label class="text-danger" id="nameEr" for=""></label>
+                                                            <label for="first-name" class="required">Name</label>
+                                                            <input type="text" id="Name" name="Name"
+                                                                onkeyup="validatecName()" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="single-input-item">
+                                                            <label class="text-danger" id="phoneEr" for=""></label>
+                                                            <label for="last-name" class="required">Phone</label>
+                                                            <input type="number" id="Phone" name="Phone"
+                                                                onkeyup="validatecPhone()" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="single-input-item">
+                                                    <label class="text-danger" id="emailEr" for=""></label>
+                                                    <label for="email" class="required">Email Addres</label>
+                                                    <input type="email" id="Email" name="Email"
+                                                        onkeyup="validatecEmail()" />
+                                                </div>
+
+                                                <div class="single-input-item">
+                                                    <button class="check-btn sqr-btn "
+                                                        onclick="return validateEform()">Save Changes</button>
+
+                                                </div>
+
+                                                <label class="text-danger" id="submitEr" for=""></label>
+                                            </form>
+
+
+                                            {{!-- -----------------------change password--------------------- --}}
+
+                                            <form action="/resetpassword" method="post" class="mt-3">
+                                                <fieldset>
+
+                                                    <legend>Password change</legend>
+                                                    <div class="single-input-item">
+                                                        <label for="current-pwd" class="required">Current
+                                                            Password</label>
+                                                        <label for="" class="text-danger"
+                                                            id="currentpasswordEr"></label>
+                                                        <input type="password" id="currentpassword"
+                                                            name="Currentpassword"
+                                                            onkeyup="validateCurrentPassword()" />
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="single-input-item">
+                                                                <label for="new-pwd" class="required">New
+                                                                    Password</label>
+                                                                <label for="" class="text-danger"
+                                                                    id="newpasswordEr"></label>
+                                                                <input type="password" id="newpassword"
+                                                                    name="Newpassword"
+                                                                    onkeyup="validateNewPassword()" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="single-input-item">
+                                                                <label for="confirm-pwd" class="required">Confirm
+                                                                    Password</label>
+                                                                <label for="" class="text-danger"
+                                                                    id="confirmpasswordEr"></label>
+                                                                <input type="password" id="confirmpassword"
+                                                                    name="Confirmpassword"
+                                                                    onkeyup="validateConfirmPassword()" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+
+                                                <div class="single-input-item">
+                                                    <button class="check-btn sqr-btn "
+                                                        onclick="return validatePform()">Save Changes</button>
+                                                </div>
+
+                                                <label for="" id="passwordsubmitEr"></label>
+                                            </form>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                                {{!-- ------------------------------add address------------------------------- --}}
+
+                                <div class="tab-pane fade" id="address-add" role="tabpanel">
+                                    <div class="myaccount-content">
+
+                                        <div class="account-details-form">
+                                            <form action="/addaddress" method="post">
+                                                <div class="row">
+
+                                                    <div class="col-lg-6">
+                                                        <div class="single-input-item">
+                                                            <label class="text-danger" id="caddress-error"
+                                                                for=""></label>
+                                                            <label for="" class="required">House Name</label>
+                                                            <input type="text" id="address" name="Housename"
+                                                                onkeyup="validatecAddress()" />
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-6">
+                                                        <div class="single-input-item">
+                                                            <label id="ctown-error" class="text-danger" for=""></label>
+                                                            <label for="" class="required">Street</label>
+                                                            <input type="text" id="town" name="Streetname"
+                                                                onkeyup="validatecTown()" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="single-input-item">
+                                                    <label for="" class="text-danger" id="cstate-error"></label>
+                                                    <label for="" class="required">State</label>
+                                                    <input type="text" id="state" name="State"
+                                                        onkeyup="validatecState()" />
+                                                </div>
+
+                                                <div class="single-input-item">
+                                                    <label for="" class="required">Pin</label>
+                                                    <label class="text-danger" id="cpincode-error" for=""></label>
+                                                    <input type="number" id="pincode" name="Pin"
+                                                        onkeyup="validatecPin()" />
+                                                </div>
+
+                                                <div class="single-input-item">
+                                                    <button class="check-btn sqr-btn" type="submit"
+                                                        onclick="return validatecform()">Save Changes</button>
+                                                </div>
+
+                                                <label class="text-danger" id="addresssubmitEr" for=""></label>
+                                            </form>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                                <!-- Single Tab Content End -->
+                                <!-- Single Tab Content Start -->
+
+                                <div class="tab-pane fade" id="account-info" role="tabpanel">
+                                    <div class="myaccount-content">
+                                        <h3>Account Details</h3>
+                                        <div class="account-details-form d-flex justify-content-evenley ">
+                                            <div>
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="single-input-item">
+                                                            <label for="first-name"
+                                                                class="required text-danger">Name</label>
+                                                            <p class="">{{userDetails.Name}}</p>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="single-input-item">
+                                                    <label for="email" class="required text-danger">Email Addres</label>
+                                                    <p>{{userDetails.Email}}</p>
+                                                </div>
+                                                <div class="single-input-item">
+                                                    <label for="email" class="required text-danger">Phone</label>
+                                                    <p>{{userDetails.Phone}}</p>
+                                                </div>
+                                                 <div class="single-input-item">
+                                                    <label for="email" class="required text-danger">Your Refferal Code</label>
+                                                    <p>{{userDetails.Refferalcode}}</p>
+                                                </div>
+                                                <div class="single-input-item">
+                                                    <label for="email" class="required text-danger">Wallet
+                                                        Amount</label>
+                                                    <p>{{userDetails.Wallet}}</p>
+                                                </div>
+                                            </div>
+                                            <div class=" ms-5 ">
+
+                                                <div class="single-input-item ">
+                                                    <label for="email" class="required text-danger">Address</label>
+                                                    {{#each address}}
+                                                    <p>{{this.addressDetail.Housename}}</p>
+                                                    <p>{{this.addressDetail.Streetname}}</p>
+                                                    <p>{{this.addressDetail.State}}</p>
+                                                    <p>{{this.addressDetail.Pin}}</p>
+
+                                                    <a href="/editaddress/{{this._id}}" class="text-primary">Edit
+                                                        Address</a>
+                                                    {{/each}}
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div> <!-- Single Tab Content End -->
+                            </div>
+                        </div> <!-- My Account Tab Content End -->
+                    </div>
+                </div> <!-- My Account Page End -->
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,159 @@
+<div class="breadcrumb-area bg-gray " style="margin-top: 12rem;">
+    <div class="container">
+        <div class="breadcrumb-content text-center">
+            <ul>
+                {{!-- <li>
+                    <a href="index.html">Home</a>
+                </li> --}}
+                <li class="active">Cart </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+{{#if products}}
+
+<div class="cart-main-area pt-115 pb-120">
+    <div class="container">
+        <h3 class="cart-page-title">Your cart items</h3>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+
+                <div class="table-content table-responsive cart-table-content">
+                    <table id="example">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Product Name</th>
+                                <th>Unit Price</th>
+                                <th>Qty</th>
+
+                                <th>action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            {{#each products}}
+                            <tr>
+
+                                <td class="product-thumbnail">
+                                    <a href="#"><img style="width: 75px; height:50px"
+                                            src="/product-image/{{this.product.Image.[3]}}" alt=""></a>
+                                </td>
+                                <td class="product-name"><a href="">{{this.product.Name}}</a></td>
+                                {{#if this.product.offer}}
+                                <td class="product-price-cart"><del>{{this.product.Price}}</del><br><span
+                                        class="amount">{{this.product.discountPrice}}</span></td>
+
+                                {{else}}
+                                {{#if this.product.productoffer}}
+                                <td class="product-price-cart"><del>{{this.product.Price}}</del><br><span
+                                        class="amount">{{this.product.productdiscountprice}}</span></td>
+
+                                {{else}}
+                                <td class="product-price-cart"><span class="amount">{{this.product.Price}}</span></td>
+                                {{/if}}
+                                {{/if}}
+                                <td class="product-quantity pro-details-quality">
+                                    <div class=" d-flex justify-content-center ">
+
+                                        <button class=" me-1 btn-light "
+                                            onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../login._id}}',-1)">-</button>
+                                        <span id="{{this.product._id}}">{{this.quantity}}</span>
+                                        <button class=" btn-light ms-1"
+                                            onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../login._id}}',1)">+</button>
+
+
+                                        {{!-- <input class="cart-plus-minus-box" type="text" name="qtybutton"
+                                            value="{{this.quantity}}"> --}}
+                                    </div>
+                                </td>
+                                {{!-- <td class="product-subtotal">$110.00</td> --}}
+                                <td class="product-remove">
+                                    <button class="btn btn-danger"
+                                        onclick="removeCart('{{this._id}}','{{this.product._id}}','{{../login._id}}')"><i
+                                            class="icon_close"></i></button>
+                                    {{!-- <a class="btn btn-danger" onclick="" href="#"><i class="icon_close"></i></a>
+                                    --}}
+                                </td>
+                            </tr>
+
+
+                            {{/each}}
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+
+
+
+                <div class="row mt-3">
+
+
+
+
+                    <div class="col-lg-4 col-md-12 ms-auto">
+                        <div class="grand-totall">
+                            <div class="title-wrap">
+                                <h4 class="cart-bottom-title section-bg-gary-cart">Cart Total</h4>
+                            </div>
+                            <h5>Sub Total <span id="subtotal">&#x20b9;{{totalValue.subtotal}}</span></h5>
+                            <div class="total-shipping">
+                                <h5>Shipping Charge</h5>
+                                <ul>
+                                    <li>Free</li>
+                                </ul>
+                            </div>
+
+                            <h5>Discount <span id="discount">&#x20b9;{{totalValue.discount}}</span></h5>
+
+                            <h4 class="grand-totall-title">Grand Total <span
+                                    id="totalvalue">&#x20b9;{{totalValue.total}}</span></h4>
+
+                            <a href="/checkout">Proceed to Checkout</a>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{else}}
+
+<div class="container">
+
+    <div class="container-fluid  mt-100 mb-50">
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <div class="card">
+                    
+                    <div class="card-body cart">
+                        <div class="col-sm-12 empty-cart-cls text-center">
+                            <img src="https://i.imgur.com/dCdflKN.png" width="130" height="130"
+                                class="img-fluid mb-4 mr-3">
+                            <h3><strong>Your Cart is Empty</strong></h3>
+                            <h4>Add something to make me happy :)</h4>
+                            <a  href="/shop" class="btn btn-primary cart-btn-transform m-3" data-abc="true">continue
+                                shopping</a>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{{/if}}

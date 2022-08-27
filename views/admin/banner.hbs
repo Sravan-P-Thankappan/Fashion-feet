@@ -1,0 +1,129 @@
+<main class="page-content">
+    <!--breadcrumb-->
+    <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+        <div class="breadcrumb-title pe-3">eCommerce</div>
+        <div class="ps-3">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0 p-0">
+                    <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Bannergement</li>
+                </ol>
+            </nav>
+        </div>
+
+
+    </div>
+
+
+    <!--end breadcrumb-->
+    <h6 class="mb-0 text-uppercase">Banner Management</h6>
+    <hr>
+
+    <div class="card">
+        <div class="card-header py-3">
+            <h6 class="mb-0">Add Banner</h6>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12 col-lg-4 d-flex">
+                    <div class="card border shadow-none w-100">
+                        <div class="card-body">
+                            <form class="row g-3" action="/admin/banner" method="post" enctype="multipart/form-data">
+                                <div class="col-12">
+                                    <label class="form-label">Brand</label>
+                                    <select name="Brand" class="form-select">
+                                   <option value="">
+                                       
+                                        
+                                       </option>
+                                       {{#each brand}}
+                                       <option>
+                                    {{this.Brand}}
+                                       </option>
+                                       {{/each}}
+                                    </select>
+                                    {{!-- <input type="text" name="code" class="form-control" placeholder=""> --}}
+
+                                </div>
+                                
+
+                                <div class="col-12">
+                                    <label class="form-label">Banner</label>
+                                    <input type="file" name="Banner" class="form-control" placeholder="" multiple>
+
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="d-grid">
+                                        <button class="btn btn-primary">Add Banner</button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-12 col-lg-8 d-flex">
+                    <div class="card border shadow-none w-100">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table align-middle">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Number</th>
+                                            <th>Image</th>
+                                            <th>Brand</th>
+                                            
+                                           
+                                           
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#each banner}}
+                                        <tr>
+
+                                            <td>*</td>
+                                            <td><img src="/product-image/{{this.Banner.[0]}}" style="width: 100px; height:70px ;" alt=""></td>
+                                            <td>{{this.brand.Brand}}</td>
+                                           
+                                            <td>
+                                                <div class="d-flex align-items-center gap-3 fs-6">
+                                                   
+                                                    {{!-- <a href="" class="text-warning" data-bs-toggle="tooltip"
+                                                        data-bs-placement="bottom" title=""
+                                                        data-bs-original-title="Edit info" aria-label="Edit"><i
+                                                            class="bi bi-pencil-fill"></i></a> --}}
+                                                    {{!-- <a href="/admin/deleteoffer/{{this._id}}/{{this.Category._id}}" onclick="return confirm('Do you want to delete?')" class="text-danger" data-bs-toggle="tooltip"
+                                                        data-bs-placement="bottom" title=""
+                                                        data-bs-original-title="Delete" aria-label="Delete"><i
+                                                            class="bi bi-trash-fill"></i></a> --}}
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        {{/each}}
+
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end row-->
+        </div>
+    </div>
+
+
+
+
+</main>

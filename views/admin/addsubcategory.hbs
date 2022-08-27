@@ -1,0 +1,66 @@
+<!--start content-->
+          <main class="page-content">
+            <!--breadcrumb-->
+            <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+              <div class="breadcrumb-title pe-3">eCommerce</div>
+              <div class="ps-3">
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb mb-0 p-0">
+                    <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Add New Sub Category</li>
+                  </ol>
+                </nav>
+              </div>
+              
+            </div>
+            <!--end breadcrumb-->
+
+              <div class="row">
+                 <div class="col-lg-8 mx-auto">
+                  <div class="card">
+                    <div class="card-header py-3 bg-transparent"> 
+                       <h5 class="mb-0">Add Sub Category</h5>
+                      </div>
+                    <div class="card-body">
+                      <div class="border p-3 rounded">
+
+                    {{!-- -----------------------adding subcategory --------------------}}
+
+
+                      <form class="row g-3" action="/admin/addsubcategory" method="post">
+                        <div class="col-12">
+                          <label class="form-label"> Sub Category</label>
+                          <label class="text-danger" id="subcategoryEr" for=""></label>
+                          <input type="text" class="form-control" id="subcategory" onkeyup="validateSubName()" name="Subcategory" placeholder="Product title">
+                        </div>
+                        <div class="col-12">
+                          <button class="btn btn-primary px-4" onclick="return validateSubCategory()">Submit Item</button>
+                          <label id="submitEr" class="text-danger" for=""></label>
+
+                        </div>
+                      </form>
+
+
+                      </div>
+                     </div>
+                    </div>
+                 </div>
+              </div><!--end row-->
+
+          </main>
+       <!--end page main-->
+
+
+       <!--start overlay-->
+        <div class="overlay nav-toggle-icon"></div>
+       <!--end overlay-->
+
+        <!--Start Back To Top Button-->
+        <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+        <!--End Back To Top Button-->
+        
+       
+
+  </div>
+  <!--end wrapper-->

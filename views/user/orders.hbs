@@ -1,0 +1,66 @@
+<div class="breadcrumb-area bg-gray " style="margin-top:12rem ;">
+    <div class="container">
+        <div class="breadcrumb-content text-center">
+            <ul>
+                {{!-- <li>
+                    <a href="index.html">Home</a>
+                </li> --}}
+                <li class="active">Order</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container my-5">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Date</th>
+                <th>Address</th>
+
+                <th>Amount</th>
+                <th>Payment Method</th>
+                <th>Status</th>
+                <th class="text-center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each orders}}
+            <tr>
+                <th scope="row">*</th>
+                <td>{{this.date}}</td>
+                <td>{{this.address.Housename}}
+                    <br>
+                    {{this.address.Streetname}}
+                    <br>
+                    {{this.address.State}}
+                    <br>
+                    {{this.address.Pin}}
+                </td>
+
+                <td>{{this.totalAmount}}</td>
+                <td>{{this.paymentMethod}}</td>
+                <td>{{this.status}}</td>
+
+                <td>
+                    {{#if this.cancel}}
+
+                    {{else}}
+                    <a class="btn btn-danger w-75" href="/cancelordertwo/{{this._id}}">Cancel</a><br>
+                    {{/if}}
+
+                    {{#if this.return}}
+                    <a class="btn btn-success w-75" href="">Return</a><br>
+                    {{/if}}
+
+                    <a class=" mt-1 btn btn-primary w-75" href="/view-order-products/{{this._id}}">View</a>
+                </td>
+            </tr>
+            {{/each}}
+
+
+        </tbody>
+    </table>
+
+</div>

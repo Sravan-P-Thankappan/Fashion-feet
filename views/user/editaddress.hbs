@@ -1,0 +1,51 @@
+<div class="breadcrumb-area bg-gray" style="margin-top:150px ;">
+    <div class="container">
+        <div class="breadcrumb-content text-center">
+            <ul>
+                {{!-- <li>
+                    <a href="index.html">Home</a>
+                </li> --}}
+                <li class="active"> Edit Address </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class=" m-5 p-5  d-flex justify-content-center">
+
+    <div class=" border border-danger p-5 " style="border-radius: 15px;">
+        <form action="/editaddress/{{address._id}}" method="post">
+            <div class="mb-3">
+                <label for="" class="form-label">House Name</label>
+                <br>
+                <label class="text-danger" id="caddress-error" for=""></label>
+                <input type="text" class="form-control" name="Housename" id="address" aria-describedby="emailHelp" value="{{address.addressDetail.Housename}}" onkeyup="validatecAddress()">
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Street</label>
+                <br>
+                <label id="ctown-error" class="text-danger" for=""></label>
+                <input type="text" class="form-control" name="Streetname" id="town" value="{{address.addressDetail.Streetname}}"onkeyup="validatecTown()">
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">State</label>
+                <br>
+                <label for="" class="text-danger" id="cstate-error"></label>
+                <input type="text" class="form-control" name="State" id="state" value="{{address.addressDetail.State}}" onkeyup="validatecState()">
+            </div>
+            <div class="mb-3">
+
+                <label for="" class="form-label">Pin</label>
+                <br>
+                <label class="text-danger" id="cpincode-error" for=""></label>
+                <input type="number" class="form-control" name="Pin" id="pincode" value="{{address.addressDetail.Pin}}" onkeyup="validatecPin()">
+            </div>
+            
+            <button type="submit" class="btn btn-danger p-2" onclick="return validatecform()">Save Changes</button>
+            <br>
+            <label class="text-danger" id="submitEr" for=""></label>
+        </form>
+
+    </div>
+
+</div>

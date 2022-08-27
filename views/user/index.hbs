@@ -1,0 +1,273 @@
+<h1>{{title}}</h1>
+{{!-- <p>Welcome to {{title}}</p> --}}
+
+
+
+
+
+
+<div class="slider-area bg-gray">
+    <div class="hero-slider-active-1 hero-slider-pt-1 nav-style-1 dot-style-1">
+        <div class="single-hero-slider single-animation-wrap">
+            <div class="container">
+                <div class="row">
+                    {{#each banner}}
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="hero-slider-content-1 hero-slider-content-1-pt-1 slider-animated-1">
+                            <h4 class="animated">Explore</h4>
+                            <h1 class="animated ">Nike<br>Footwears</h1>
+                            <p class="animated"> If you love the outdoors, these are your shoes for every adventure
+                                </p>
+                            <div class="btn-style-1 mb-5">
+                                <a class="animated btn-1-padding-1" href="/brandwise/{{this.Brand}}">Explore Now</a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="hero-slider-img-1 slider-animated-1">
+                            <img class="animated" src="/product-image/{{this.Banner.[0]}}" alt="shoes">
+
+
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+<div style="margin-top: 8rem;">
+
+    <div class="service-area mt-3">
+        <div class="container " style="margin-top: 8rem;">
+            <div class="service-wrap">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                        <div class="single-service-wrap mb-30">
+                            <div class="service-icon">
+                                <i class="icon-cursor"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3>Free Shipping</h3>
+                                <span>For All Orders</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                        <div class="single-service-wrap mb-30">
+                            <div class="service-icon">
+                                <i class="icon-reload"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3>Free Returns</h3>
+                                <span>Within 30 days</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                        <div class="single-service-wrap mb-30">
+                            <div class="service-icon">
+                                <i class="icon-lock"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3>100% Secure</h3>
+                                <span>Payment Online</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                        <div class="single-service-wrap mb-30">
+                            <div class="service-icon">
+                                <i class="icon-tag"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3>Best Price</h3>
+                                <span>Guaranteed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="about-us-area pt-85">
+        <div class="container">
+            <div class="border-bottom-1 about-content-pb">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3">
+                        <div class="about-us-logo">
+                            <img class="mb-5" style="width: 100px; height: 100px;" src="/images/logo2.png" alt="logo">
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-9">
+                        <div class="about-us-content">
+                            <h3>Introduce</h3>
+                            <p>Fashion Feet store is a business concept is to offer men's footwear and quality at the best price. It
+                                has
+                                since it was founded in 2022 grown into one of the best E-Commerce Fashion Theme. The
+                                content of this site is copyright-protected and is the property of Sravan  .
+                            </p>
+                            <div class="signature">
+                                <h2>David Moye</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="product-area section-padding-1 pt-115 pb-75">
+        <div class="container-fluid">
+            <div class="section-title-tab-wrap mb-45">
+                <div class="section-title">
+                    <h2>Featured Products</h2>
+                </div>
+                <div class="tab-style-1 nav">
+                    
+                    <a href="/shop">All Products</a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container  ">
+            <div class="tab-content jump">
+                <div id="product-1" class="tab-pane active ">
+                    <div class="row mt-3 ">
+                        {{#each products}}
+                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
+                            <div class="single-product-wrap mb-35">
+                                <div class="product-img product-img-zoom mb-20">
+
+                                    <a href="/getdetails/{{this._id}}">
+                                        <img style="width:200px ; height:230px ;"
+                                            src="/product-image/{{this.Image.[0]}}" alt="s">
+                                    </a>
+
+                                    <div class="product-action-wrap">
+                                        <div class="product-action-left">
+
+
+
+                                            <button onclick="addToCart('{{this._id}}')"><i
+                                                    class="icon-basket-loaded"></i>Add to Cart</button>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="product-content-wrap">
+                                    <div class="product-content-left">
+                                        <h4><a href="">{{this.Brand}}</a></h4>
+                                        <div class="product-price">
+                                            <span class="lead"><small>{{this.Name}}</small></span>
+                                        </div>
+                                        {{#if this.offer}}
+
+                                        <div class="product-price">
+                                            <span class="text-success lead"><small><del
+                                                        class="text-warning">&#x20b9;{{this.Price}}</del><br>&#x20b9;{{this.discountPrice}}</small></span>
+                                        </div>
+
+                                        {{else  }}
+
+                                        {{#if this.productoffer}}
+                                         <div class="product-price">
+                                            <span class="text-success lead"><small><del
+                                            class="text-warning">&#x20b9;{{this.Price}}</del><br>&#x20b9;{{this.productdiscountprice}}</small></span>
+                                        </div>
+                                       
+                                        {{else}}
+                                        
+                                        <div class="product-price">
+                                            <span class="text-success lead"><small>&#x20b9;{{this.Price}}</small></span>
+                                        </div>
+                                        {{/if}}
+                                        {{/if}}
+                                    </div>
+
+                                    <div class="product-content-right tooltip-style pe-5">
+                                        <button onclick="addTowhishList('{{this._id}}')" class="font-inc"><i
+                                                class="icon-heart"></i><span>Wishlist</span></button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container " style="margin-top:5rem ;">
+            <hr class=" lead">
+        </div>
+
+        <div class="container-fluid " style="margin-top: 5rem;">
+            <div class="section-title-tab-wrap mb-45">
+                <div class="section-title">
+                    <h2>Top Categories</h2>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="banner-area padding-10-row-col pb-105">
+            <div class="container " style="margin-top:5 rem;">
+
+                <div class="row">
+                    {{#each category}}
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="banner-wrap mb-10">
+                            <div class="banner-img  banner-img-zoom  ">
+                                <a href="/categorywise/{{this._id}}"><img class=""
+                                        src="/product-image/{{this.Image.[0]}}" alt=""
+                                        style="width: 300px; height: 300px;"></a>
+                            </div>
+                            <div class="banner-content-4 mt-5">
+                                {{!-- <h2>Discount <br> <span>50%</span> OFF</h2>
+                                <span>backpack</span>
+                                <h3>new era</h3> --}}
+                                {{!-- <div class="btn-style-4 ">
+                                    <a href="product-details.html">Shop now <i class="icon-arrow-right"></i></a>
+                                </div> --}}
+                            </div>
+                        </div>
+
+                        <div class="product-content-left">
+                            <h4 class="" style="margin-left: 8rem;"><a href="">{{this.Category}}</a></h4>
+
+
+                        </div>
+                    </div>
+
+
+
+                    {{/each}}
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+    </div>
+</div>

@@ -1,0 +1,187 @@
+<!--start content-->
+<main class="page-content">
+  <!--breadcrumb-->
+  <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+    <div class="breadcrumb-title pe-3">eCommerce</div>
+    <div class="ps-3">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0 p-0">
+          <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Edit Product</li>
+        </ol>
+      </nav>
+    </div>
+
+  </div>
+  <!--end breadcrumb-->
+
+  <div class="row">
+    <div class="col-lg-8 mx-auto">
+      <div class="card">
+        <div class="card-header py-3 bg-transparent">
+          <h5 class="mb-0">Edit Product</h5>
+        </div>
+        <div class="card-body">
+          <div class="border p-3 rounded">
+
+            {{!-- -----------------------edit products --------------------}}
+
+
+            <form class="row g-3" action="/admin/editproduct/{{product._id}}" method="post"
+              enctype="multipart/form-data">
+
+              <div class="col-12">
+                <label class="form-label">Product title</label>
+                <label id="productnameer" class="text-danger" for=""></label>
+
+                <input type="text" class="form-control" name="Name" value="{{product.Name}}" id="productname"
+                  onkeyup="validatePname()" placeholder="Product title">
+              </div>
+              <div class="col-12">
+                <label class="form-label">Full description</label>
+                <label id="productdescriptioner" class="text-danger" for=""></label>
+
+                <textarea class="form-control" name="Description" id="productdescription" placeholder="Full description"
+                  onkeyup="validatePdesc()" rows="4" cols="4"></textarea>
+              </div>
+              <div class="col-12">
+                <img class="mb-2" src="/product-image/{{product.Image.[0]}}" style="width:90px ; height:60px ;" alt="">
+
+                <label class="form-label ">Images</label>
+
+                <input class="form-control" name="Image" type="file" multiple>
+              </div>
+              {{!-- <div class="col-12">
+                <label class="form-label">Tags</label>
+                <input type="text" class="form-control" placeholder="Enter tags">
+              </div> --}}
+
+              <div class="col-12 col-md-6">
+                <label class="form-label">Category</label>
+
+                <select class="form-select" name="Category">
+
+                  {{#each category}}
+                  <option>{{this.Category}}</option>
+                  {{/each}}
+
+                </select>
+
+              </div>
+
+              <div class="col-12 col-md-6">
+                <label class="form-label">Sub-category</label>
+
+                <select class="form-select" name="Subcategory">
+                  {{#each subcategory}}
+                  <option>{{this.Subcategory}}</option>
+                  {{/each}}
+
+
+                </select>
+
+              </div>
+
+              <div class="col-12 col-md-6">
+                <label class="form-label">Brand</label>
+
+                <select class="form-select" name="Brand">
+                  {{#each brand}}
+                  <option>{{this.Brand}}</option>
+                  {{/each}}
+
+                </select>
+
+              </div>
+
+              <div class="col-12 col-md-6">
+                <label class="form-label">Color</label>
+
+                <select class="form-select" name="Color">
+                  {{#each color}}
+                  <option>{{this.Color}}</option>
+                  {{/each}}
+
+
+                </select>
+
+              </div>
+
+              <div class="col-12 col-md-6">
+                <label class="form-label">Size</label>
+
+                <select class="form-select" name="Size">
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+                  <option>8</option>
+                  <option>9</option>
+                  <option>10</option>
+
+                </select>
+
+              </div>
+
+              <div class="col-12">
+                <label class="form-label">Stock</label>
+                <div class="row g-3">
+                  <label class="text-danger" id="stocker" for=""></label>
+
+
+                  <div class="col-lg-9">
+                    <input type="number" name="Stock" value="{{product.Stock}}" id="stock" class="form-control"
+                      onkeyup="validateStock()" placeholder="Stock">
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label class="form-label">Price</label>
+                <label class="text-danger" id="priceer" for=""></label>
+
+                <div class="row g-3">
+
+                  <div class="col-lg-9">
+                    <input type="number" name="Price" value="{{product.Price}}" id="productprice" class="form-control"
+                      onkeyup="validatePrice()" placeholder="Price">
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="col-12">
+
+                <button class="btn btn-primary px-4" onclick="return validateProduct()">Submit Item</button>
+
+              </div>
+              <label id="submitEr" class="text-danger" for=""></label>
+
+
+            </form>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--end row-->
+
+</main>
+<!--end page main-->
+
+
+<!--start overlay-->
+<div class="overlay nav-toggle-icon"></div>
+<!--end overlay-->
+
+<!--Start Back To Top Button-->
+<a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+<!--End Back To Top Button-->
+
+
+
+</div>
+<!--end wrapper-->
