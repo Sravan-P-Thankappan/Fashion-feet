@@ -1476,23 +1476,15 @@ module.exports =
 
     return new Promise( (resolve, reject) => {
 
-   db.get().collection(collection.BANNER_COLLECTION).aggregate([
-        {
-          $lookup:
-          {
-            from: collection.BRAND_COLLECTION,
-            localField: 'Brand',
-            foreignField: '_id',
-            as: 'brand'
-          }
-        },
-        {
-          $unwind: '$brand'
-        }
-      ]).toArray().then((banner)=>{
-        resolve(banner)
 
+      db.get().collection(collection.BANNER_COLLECTION).find().toArray().then((banner)=>{
+            
+        console.log("bannnerrrrr");
+        console.log(banner);
+            
+          resolve(banner)
       })
+
 
     })
   },
