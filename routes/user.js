@@ -50,19 +50,27 @@ router.get('/', async function (req, res, next) {
          cartCount = await userHelper.getCartCount(req.session.user._id)
       }
 
-      let banner = await userHelper.getAllBanner()
+      // let banner = await userHelper.getAllBanner()
       let category = await categoryHelper.getAllCategory() 
 
       productHelper.getFeaturedProducts().then((products) => {
-
+       
+         userHelper.getAllBanner().then((banner)=>{
+          
+            if (req.session.loggedIn) {
+               res.render('user/index', { user: true, login: req.session.user, products, cartCount, whishlistCount, banner, category });
+            }
+            else {
+               res.render('user/index', { user: true, products, banner, category })
+            }
+         })
          
-
-         if (req.session.loggedIn) {
-            res.render('user/index', { user: true, login: req.session.user, products, cartCount, whishlistCount, banner, category });
-         }
-         else {
-            res.render('user/index', { user: true, products, banner, category })
-         }
+         // if (req.session.loggedIn) {
+         //    res.render('user/index', { user: true, login: req.session.user, products, cartCount, whishlistCount, banner, category });
+         // }
+         // else {
+         //    res.render('user/index', { user: true, products, banner, category })
+         // }
       })
 
   
