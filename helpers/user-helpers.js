@@ -1472,22 +1472,7 @@ module.exports =
 
   },
 
-  getAllBanner: () => {   
-
-    return new Promise( (resolve, reject) => {
-
-
-      db.get().collection(collection.BANNER_COLLECTION).find().toArray().then((banner)=>{
-            
-        console.log("bannnerrrrr");
-        console.log(banner);
-            
-          resolve(banner)
-      })
-
-
-    })
-  },
+ 
 
   applyWallet:(data,userId)=>{
           
