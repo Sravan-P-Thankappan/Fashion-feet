@@ -58,10 +58,10 @@ router.get('/', async function (req, res, next) {
          
 
          if (req.session.loggedIn) {
-            res.render('user/index', { user: true, login: req.session.user, products, cartCount, whishlistCount, banner, category });
+            res.render('user/index', { user: true, login: req.session.user, products, cartCount, whishlistCount, category });
          }
          else {
-            res.render('user/index', { user: true, products, banner, category })
+            res.render('user/index', { user: true, products, category })
          }
       })
 
