@@ -67,7 +67,7 @@ function validatePrice(){
 }
 
 function validateProduct(){
-    if(!validatePname()||validatePdesc()||validateStock()||validatePrice())
+    if(!validatePname()||!validatePdesc()||!validateStock()||!validatePrice())
     {
         subEr.innerHTML='Empty field is not allowed'
         return false;

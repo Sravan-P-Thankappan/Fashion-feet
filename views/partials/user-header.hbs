@@ -128,7 +128,7 @@
                 <div class="row align-items-center">
                     <div class="col-5">
                         <div class="mobile-logo">
-                            <a href="index.html">
+                            <a href="/">
                                 <img alt="" style="width:100px ; height:100px ;" src="/images/logo2.png">
                             </a>
                         </div>
@@ -212,30 +212,27 @@
                     </div>
 
                     <div class="single-mobile-header-info">
+                        {{#if login}}
+                        <a class="mobile-currency-active" href="#">{{login.Name}}</i></a>
+                                {{else}}
                         <a class="mobile-currency-active" href="#"><i class="icon-user"
                                 style="font-size: 25px; "></i></a>
+                                {{/if}}
                         <div class="lang-curr-dropdown curr-dropdown-active">
                             <ul>
+                                {{#if login}}
+                                <li><a href="/logout">Logout</a></li>
+                                <li><a href="/account">Account</a></li>
+                                 {{else}}
                                 <li><a href="/login-register">Login</a></li>
                                 <li><a href="/login-register">Register</a></li>
-
+                                {{/if}}
+                            
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div class="mobile-contact-info mobile-header-padding-border-4">
-                    <ul>
-                        <li><i class="icon-phone "></i> (+612) 2531 5600</li>
-                        <li><i class="icon-envelope-open "></i> norda@domain.com</li>
-                        <li><i class="icon-home"></i> PO Box 1622 Colins Street West Australia</li>
-                    </ul>
-                </div>
-                <div class="mobile-social-icon">
-                    <a class="facebook" href="#"><i class="icon-social-facebook"></i></a>
-                    <a class="twitter" href="#"><i class="icon-social-twitter"></i></a>
-                    <a class="pinterest" href="#"><i class="icon-social-pinterest"></i></a>
-                    <a class="instagram" href="#"><i class="icon-social-instagram"></i></a>
-                </div>
+                
             </div>
         </div>
     </div>

@@ -441,7 +441,7 @@ module.exports =
         }
 
       ]).toArray()
-
+      console.log(data);
       resolve(data)
 
     })
