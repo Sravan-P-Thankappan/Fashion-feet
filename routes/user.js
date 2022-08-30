@@ -15,6 +15,7 @@ const productHelper = require('../helpers/producthelpers')
 
 const categoryHelper = require('../helpers/category');
 const paypal = require('paypal-rest-sdk');
+const adminhelper = require('../helpers/adminhelper');
 
 const accountSid = "ACa32652eaf8489caecd2234f9b8b0c9ff";
 const authToken = "0a2217412e1b3bdf4e89ac3c65659a99";
@@ -55,7 +56,7 @@ router.get('/', async function (req, res, next) {
 
       productHelper.getFeaturedProducts().then((products) => {
        
-         userHelper.getAllBanner().then((banner)=>{
+         adminhelper.getAllBanner().then((banner)=>{
           
             if (req.session.loggedIn) {
                res.render('user/index', { user: true, login: req.session.user, products, cartCount, whishlistCount, banner, category });

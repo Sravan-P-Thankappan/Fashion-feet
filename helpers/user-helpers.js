@@ -10,7 +10,7 @@ const serviceID = 'VA7395bd17db80873a758e3eba3c1087c8'
 
 const Razorpay = require('razorpay');
 const paypal = require('paypal-rest-sdk');
-const { log } = require('console');
+// const { log } = require('console');
 
 // ---------------------paypal set up--------------------
 
