@@ -1,6 +1,6 @@
 module.exports=
 {
-  USER_COLLECTION : 'userdetails',
+  USER_COLLECTION : 'user',
   
   ADMIN_COLLECTION : 'admin',
 

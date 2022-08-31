@@ -10,7 +10,9 @@ const state =
 
 const connect = function(done)
 {
-  const url = 'mongodb+srv://sravan:sravanpt@cluster0.u1q6ub7.mongodb.net/?retryWrites=true&w=majority'
+  // const url = 'mongodb+srv://sravan:sravanpt@cluster0.u1q6ub7.mongodb.net/?retryWrites=true&w=majority'
+
+  const url = 'mongodb+srv://sravan:sravanpt@cluster0.j0rljlh.mongodb.net/?retryWrites=true&w=majority'
  
   // const url = 'mongodb://localhost:27017'
 
