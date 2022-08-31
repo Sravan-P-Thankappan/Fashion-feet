@@ -68,9 +68,6 @@ router.get('/', async function (req, res, next) {
         
       })
 
-  
-  
-
 });
   
 
@@ -93,7 +90,9 @@ router.get('/login-register', (req, res) => {
 // ---------------------after login get home page----------------------
 
 router.post('/login', (req, res) => {
-
+   
+   console.log(req.body);
+   
    userHelper.doLogin(req.body).then((response) => {
       let a = response.user
       if (response.status) {

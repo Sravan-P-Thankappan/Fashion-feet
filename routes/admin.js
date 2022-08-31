@@ -383,7 +383,8 @@ router.post('/editproduct/:id', upload.array('Image', 4), (req, res, next) => {
   })
 
   req.body.Image = filenames
-
+  console.log(req.body);
+ 
   productHelper.updateProducts(pId, req.body).then(() => {
 
 
