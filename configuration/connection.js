@@ -16,7 +16,7 @@ const connect = function(done)
  
   // const url = 'mongodb://localhost:27017'
 
-  const dbname = 'shoppingcart'
+  const dbname = 'fashionfeet'
 
   Mongoclient.connect(url,(err,data)=>
   {
