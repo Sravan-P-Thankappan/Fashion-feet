@@ -33,7 +33,7 @@ module.exports =
 {
   doSignup: (userData) => {
     return new Promise(async (resolve, reject) => {
-      let existinguser = await db.get().collection(collection.USER_COLLECTION).findOne({ Email: userData.Email })
+      let existinguser = await db.get().collection(collection.NEWUSER_COLLECTION).findOne({ Email: userData.Email })
 
       if (existinguser) {
         existingStatus = true
@@ -45,12 +45,12 @@ module.exports =
         userData.Wallet = 0
 
         if (userData.Rcode.length !== 0) {
-          let refferedUser = await db.get().collection(collection.USER_COLLECTION).findOne({ Refferalcode: userData.Rcode })
+          let refferedUser = await db.get().collection(collection.NEWUSER_COLLECTION).findOne({ Refferalcode: userData.Rcode })
           console.log('reffered userrrrrrrr');
           console.log(refferedUser);
           if (refferedUser) {
 
-            db.get().collection(collection.USER_COLLECTION).updateOne({ _id: refferedUser._id }, {
+            db.get().collection(collection.NEWUSER_COLLECTION).updateOne({ _id: refferedUser._id }, {
               $set: {
                 Wallet: refferedUser.Wallet + 100
               }
@@ -64,7 +64,7 @@ module.exports =
 
         userData.Password = await bcrypt.hash(userData.Password, 10)
 
-        db.get().collection(collection.USER_COLLECTION).insertOne(userData).then((data) => {
+        db.get().collection(collection.NEWUSER_COLLECTION).insertOne(userData).then((data) => {
           resolve(userData)
         })
 
@@ -80,7 +80,7 @@ module.exports =
       let loginStatus = false
       let response = {}
 
-      let user = await db.get().collection(collection.USER_COLLECTION).findOne({ Email: userData.Email })
+      let user = await db.get().collection(collection.NEWUSER_COLLECTION).findOne({ Email: userData.Email })
 
       if (user) {
         bcrypt.compare(userData.Password, user.Password).then((status) => {
@@ -112,7 +112,7 @@ module.exports =
 
       let response = {}
 
-      let user = await db.get().collection(collection.USER_COLLECTION).findOne({ Phone: userData.Phone })
+      let user = await db.get().collection(collection.NEWUSER_COLLECTION).findOne({ Phone: userData.Phone })
 
       if (user) {
         if (user.status) {
@@ -184,7 +184,7 @@ module.exports =
 
     return new Promise(async (resolve, reject) => {
 
-      let users = await db.get().collection(collection.USER_COLLECTION).find().toArray()
+      let users = await db.get().collection(collection.NEWUSER_COLLECTION).find().toArray()
 
       resolve(users)
 
@@ -196,7 +196,7 @@ module.exports =
 
     return new Promise(async (resolve, reject) => {
 
-      let user = await db.get().collection(collection.USER_COLLECTION).findOne({ _id: objectId(uId) })
+      let user = await db.get().collection(collection.NEWUSER_COLLECTION).findOne({ _id: objectId(uId) })
       console.log(user);
       resolve(user)
     })
@@ -208,7 +208,7 @@ module.exports =
 
     return new Promise((resolve, reject) => {
 
-      db.get().collection(collection.USER_COLLECTION).updateOne({ _id: objectId(uId) },
+      db.get().collection(collection.NEWUSER_COLLECTION).updateOne({ _id: objectId(uId) },
 
         {
           $set: {
@@ -227,7 +227,7 @@ module.exports =
 
     return new Promise((resolve, reject) => {
 
-      db.get().collection(collection.USER_COLLECTION).updateOne({ _id: objectId(uId) },
+      db.get().collection(collection.NEWUSER_COLLECTION).updateOne({ _id: objectId(uId) },
         {
           $set: {
             status: true
@@ -639,7 +639,7 @@ module.exports =
         {
           $lookup:
           {
-            from: collection.USER_COLLECTION,
+            from: collection.NEWUSER_COLLECTION,
             localField: 'userId',
             foreignField: '_id',
             as: 'user'
@@ -1247,7 +1247,7 @@ module.exports =
     return new Promise((resolve, reject) => {
 
 
-      db.get().collection(collection.USER_COLLECTION).updateOne({ _id: objectId(uId) },
+      db.get().collection(collection.NEWUSER_COLLECTION).updateOne({ _id: objectId(uId) },
 
         {
           $set:
@@ -1268,7 +1268,7 @@ module.exports =
 
     return new Promise(async (resolve, reject) => {
 
-      let user = await db.get().collection(collection.USER_COLLECTION).findOne({ _id: objectId(uId) })
+      let user = await db.get().collection(collection.NEWUSER_COLLECTION).findOne({ _id: objectId(uId) })
 
       if (user) {
 
@@ -1277,7 +1277,7 @@ module.exports =
           if (status) {
             data.Newpassword = await bcrypt.hash(data.Newpassword, 10)
 
-            db.get().collection(collection.USER_COLLECTION).updateOne({ _id: objectId(uId) },
+            db.get().collection(collection.NEWUSER_COLLECTION).updateOne({ _id: objectId(uId) },
               {
                 $set:
                 {
@@ -1479,7 +1479,7 @@ module.exports =
     let total =  parseInt(data.total)
     return new Promise(async(resolve,reject)=>{
       
-    let user = await db.get().collection(collection.USER_COLLECTION).findOne({_id:objectId(userId)})
+    let user = await db.get().collection(collection.NEWUSER_COLLECTION).findOne({_id:objectId(userId)})
         if(user)
         {
           if(wallet>user.Wallet)
@@ -1490,7 +1490,7 @@ module.exports =
          
           else{
             
-            db.get().collection(collection.USER_COLLECTION).updateOne({_id:user._id},
+            db.get().collection(collection.NEWUSER_COLLECTION).updateOne({_id:user._id},
               {
                 $set:{
                   Wallet:user.Wallet-wallet

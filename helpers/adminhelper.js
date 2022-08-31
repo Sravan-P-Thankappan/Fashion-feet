@@ -36,7 +36,7 @@ module.exports =
       let orders = await db.get().collection(collection.ORDER_COLLECTION).aggregate([
         {
           $lookup: {
-            from: collection.USER_COLLECTION,
+            from: collection.NEWUSER_COLLECTION,
             localField: 'userId',
             foreignField: '_id',
             as: 'user'
@@ -94,7 +94,7 @@ module.exports =
 
           $lookup: {
 
-            from: collection.USER_COLLECTION,
+            from: collection.NEWUSER_COLLECTION,
             localField: 'userId',
             foreignField: '_id',
             as: 'user'
@@ -473,7 +473,7 @@ module.exports =
 
     return new Promise(async (resolve, reject) => {
 
-      let count = await db.get().collection(collection.USER_COLLECTION).count()
+      let count = await db.get().collection(collection.NEWUSER_COLLECTION).count()
 
       resolve(count)
 

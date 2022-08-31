@@ -26,7 +26,9 @@ module.exports=
 
   OFFER_COLLECTION:'offer',
 
-  BANNER_COLLECTION:'banner'
+  BANNER_COLLECTION:'banner',
+
+  NEWUSER_COLLECTION:'newuser'
 
  
 }    
