@@ -1,11 +1,9 @@
 
 var express = require('express');
-const session = require('express-session');
 const adminhelper = require('../helpers/adminhelper');
 const userHelper = require('../helpers/user-helpers')
 const productHelper = require('../helpers/producthelpers')
 const categoryHelper = require('../helpers/category');
-// const category = require('../helpers/category');
 var router = express.Router();
 var multer = require('multer');
 

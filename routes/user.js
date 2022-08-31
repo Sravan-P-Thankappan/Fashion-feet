@@ -1,5 +1,5 @@
-// const { response, json } = require('express');
 var express = require('express');
+
 var err
 var blockEr
 var router = express.Router();
@@ -17,11 +17,11 @@ const categoryHelper = require('../helpers/category');
 const paypal = require('paypal-rest-sdk');
 const adminhelper = require('../helpers/adminhelper');
 
-const accountSid = "ACa32652eaf8489caecd2234f9b8b0c9ff";
-const authToken = "0a2217412e1b3bdf4e89ac3c65659a99";
+// const accountSid = "ACa32652eaf8489caecd2234f9b8b0c9ff";
+// const authToken = "0a2217412e1b3bdf4e89ac3c65659a99";
 
-const client = require('twilio')(accountSid, authToken)
-const serviceID = 'VA7395bd17db80873a758e3eba3c1087c8'
+// const client = require('twilio')(accountSid, authToken)
+// const serviceID = 'VA7395bd17db80873a758e3eba3c1087c8'
 
 
 // -----------------middleware---------------------
@@ -92,7 +92,7 @@ router.get('/login-register', (req, res) => {
 router.post('/login', (req, res) => {
    
    console.log(req.body);
-   
+
    userHelper.doLogin(req.body).then((response) => {
       let a = response.user
       if (response.status) {
