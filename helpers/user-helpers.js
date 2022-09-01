@@ -179,17 +179,35 @@ module.exports =
   },
 
 
-  getAllUsers: () => {
+  // getAllUsers: () => {
+    
+  //   return new Promise(async (resolve, reject) => {
+    
+  //     let users = await db.get().collection(collection.NEWUSER_COLLECTION).find().toArray()
+     
+  //    if (user){ console.log(user); resolve(users) }
+  //    else{ 
+  //     console.log();
+  //      reject(err)
+  //    }
 
-    return new Promise(async (resolve, reject) => {
+  //   })
 
-      let users = await db.get().collection(collection.NEWUSER_COLLECTION).find().toArray()
+  // },
 
-      resolve(users)
+  getAllUsers:()=>{
+   return new Promise ((resolve,reject)=>{
+     
+    db.get().collection(collection.NEWUSER_COLLECTION).find().toArray().then((user)=>{
 
+      resolve(user)
+    }).catch((err)=>{
+        console.log(err);
     })
 
+   })
   },
+
 
   getUser: (uId) => {
 
