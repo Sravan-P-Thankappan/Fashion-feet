@@ -10,7 +10,7 @@ var multer = require('multer');
 
 // ----------multer set up-----------------
 
-var fileStorage = multer.diskStorage({
+var fileStorage = multer.diskStorage({ 
 
   destination: (req, file, cb) => { 
 

@@ -77,7 +77,6 @@ module.exports =
 
     return new Promise(async (resolve, reject) => {
 
-      let loginStatus = false
       let response = {}
 
       let user = await db.get().collection(collection.NEWUSER_COLLECTION).findOne({ Email: userData.Email })
