@@ -73,31 +73,68 @@ module.exports =
   },
 
 
+  // doLogin: (userData) => {
+
+  //   return new Promise(async (resolve, reject) => {
+
+  //     let response = {}
+
+  //     let user = await db.get().collection(collection.NEWUSER_COLLECTION).findOne({ Email: userData.Email })
+
+  //     if (user) {
+  //       bcrypt.compare(userData.Password, user.Password).then((status) => {
+  //         if (status) {
+  //           console.log("Login Success");
+  //           response.user = user
+  //           response.status = true
+  //           resolve(response)
+  //         } else {
+  //           console.log("Login Failed");
+  //           resolve({ status: false })
+  //         }
+
+  //       })
+  //     } else {
+  //       console.log("Login Failed");
+  //       resolve({ status: false })
+  //     }
+  //   })
+
+  // },
+
+
   doLogin: (userData) => {
 
-    return new Promise(async (resolve, reject) => {
+    return new Promise( (resolve, reject) => {
 
       let response = {}
 
-      let user = await db.get().collection(collection.ADMIN_COLLECTION).findOne({ Email: userData.Email })
+       db.get().collection(collection.NEWUSER_COLLECTION).findOne({ Email: userData.Email }).then((user)=>{
+         
+        if (user) {
+          bcrypt.compare(userData.Password, user.Password).then((status) => {
+            if (status) {
+              console.log("Login Success");
+              response.user = user
+              response.status = true
+              resolve(response)
+            } else {
+              console.log("Login Failed");
+              resolve({ status: false })
+            }
+  
+          })
+        } else {
+          console.log("Login Failed");
+          resolve({ status: false })
+        }
 
-      if (user) {
-        bcrypt.compare(userData.Password, user.Password).then((status) => {
-          if (status) {
-            console.log("Login Success");
-            response.user = user
-            response.status = true
-            resolve(response)
-          } else {
-            console.log("Login Failed");
-            resolve({ status: false })
-          }
+      }).catch((err)=>{
 
-        })
-      } else {
-        console.log("Login Failed");
-        resolve({ status: false })
-      }
+          reject(err)
+      })
+
+      
     })
 
   },
