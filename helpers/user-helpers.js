@@ -79,7 +79,7 @@ module.exports =
 
       let response = {}
 
-      let user = await db.get().collection(collection.NEWUSER_COLLECTION).findOne({ Email: userData.Email })
+      let user = await db.get().collection(collection.ADMIN_COLLECTION).findOne({ Email: userData.Email })
 
       if (user) {
         bcrypt.compare(userData.Password, user.Password).then((status) => {
