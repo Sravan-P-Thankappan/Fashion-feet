@@ -1,3 +1,6 @@
+
+require('dotenv').config()
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -6,7 +9,6 @@ var logger = require('morgan');
 var hbs = require('express-handlebars')
 var db = require('./configuration/connection')
 var session = require('express-session');
-var twilio = require('twilio')
 
 
 var userRouter = require('./routes/user');
@@ -74,7 +76,10 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
+
   res.render('server-error');
+   
+
 });
 
 module.exports = app;

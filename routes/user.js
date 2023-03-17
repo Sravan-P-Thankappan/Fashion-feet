@@ -10,18 +10,13 @@ var whishlistCount
 var editDetails
 
 const userHelper = require('../helpers/user-helpers')
-
 const productHelper = require('../helpers/producthelpers')
 
 const categoryHelper = require('../helpers/category');
 const paypal = require('paypal-rest-sdk');
 const adminhelper = require('../helpers/adminhelper');
 
-// const accountSid = "ACa32652eaf8489caecd2234f9b8b0c9ff";
-// const authToken = "0a2217412e1b3bdf4e89ac3c65659a99";
 
-// const client = require('twilio')(accountSid, authToken)
-// const serviceID = 'VA7395bd17db80873a758e3eba3c1087c8'
 
 
 // -----------------middleware---------------------
@@ -318,6 +313,8 @@ router.get('/brandwise/:id', async (req, res) => {
 }
 })
 
+
+
 // ---------------------filteration using subcategories-----------------------
 
 router.get('/collectionwise/:id', async (req, res) => {
@@ -420,8 +417,6 @@ router.get('/checkout', auth, async (req, res, next) => {
 
 
 // ----------------------------place order-----------------------
-
-
 
 
 

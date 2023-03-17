@@ -3,10 +3,11 @@ var collection = require('../configuration/collection')
 var bcrypt = require('bcrypt');
 const objectId = require('mongodb').ObjectId
 
-const accountSid = "ACa32652eaf8489caecd2234f9b8b0c9ff";
-const authToken = "0a2217412e1b3bdf4e89ac3c65659a99";
+
+const accountSid = process.env.TWILIO_ACCOUNTSID; //provide your accountSid
+const authToken = process.env.TWILIO_AUTHTOKEN; // provide your authToken
 const client = require('twilio')(accountSid, authToken)
-const serviceID = 'VA7395bd17db80873a758e3eba3c1087c8'
+const serviceID = process.env.TWILIO_SERVICEID ; // provide your serviceId
 
 const Razorpay = require('razorpay');
 const paypal = require('paypal-rest-sdk');
@@ -15,16 +16,16 @@ const paypal = require('paypal-rest-sdk');
 
 paypal.configure({
   'mode': 'sandbox', //sandbox or live 
-  'client_id': 'AbefN-j6WxlmZ1dSQuuT96ImcKsuWmtKv7GVNcYGnglTvdUYCEqc_T793V7Q9Fm5EKISY25NQXUJwnJY', // please provide your client id here 
-  'client_secret': 'EO2LmtWyusBrYslcDWsgOq1U3p92DW3vfQGL4kUY33b5p59R6pjWmYgyPWO-JL7WSV1cO62EIfO29BUE' // provide your client secret here 
+  'client_id': process.env.PAYPAL_CLIENTID, // please provide your client id here 
+  'client_secret': process.env.PAYPAL_CLIENT_SECRET // provide your client secret here 
 });
 
 
 // -----------------------------------------razorpay setup--------------------------
 
 var instance = new Razorpay({
-  key_id: 'rzp_test_tktJ5Z7OxNsc7R',
-  key_secret: 'hq9Jc4vNQD75rEpL7ngYGa7q',
+  key_id: process.env.RAZORPAY_KEYID,  // provide your keyid
+  key_secret: process.env.RAZORPAY_KEYSECRET, // provide your key_secret
 });
 
 
